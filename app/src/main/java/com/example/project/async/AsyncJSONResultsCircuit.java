@@ -1,9 +1,11 @@
 package com.example.project.async;
 
+import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.project.Circuits;
+import com.example.project.activities.InfoCircuitActivity;
 import com.example.project.adapters.MyAdapteInfoCircuit;
 import com.example.project.adapters.MyAdapterCircuits;
 import com.example.project.utils.InfoCircuit;
@@ -65,6 +67,10 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             JSONArray items3 = items2.getJSONArray("Races");
             JSONObject entry = items3.getJSONObject(0);
             JSONArray Resultarray = entry.getJSONArray("Results");
+
+            String racename = entry.getString("raceName");
+
+            InfoCircuitActivity.textnamecircuit.setText(racename);
 
             for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
             {

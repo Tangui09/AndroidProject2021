@@ -62,6 +62,7 @@ public class CircuitActivity extends AppCompatActivity {
                 String texteditTextYear = editTextYear.getText().toString() ;
                 Object data = adapter.getItemName(position);
                 String data2 = data+"";
+                intent.putExtra("Race","not last");
                 intent.putExtra("year",texteditTextYear);
                 intent.putExtra("position",String.valueOf(position));
                 intent.putExtra("Racename",data2);

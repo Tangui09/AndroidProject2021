@@ -23,11 +23,12 @@ import static com.example.project.utils.Constant.PREF_DRIVERS;
 public class InfoCircuitActivity extends AppCompatActivity {
 
     public AppCompatActivity myActivity;
-    private TextView textnamecircuit;
+    public static TextView textnamecircuit;
     private TextView text_circuit;
     private ListView list;
     private MyAdapteInfoCircuit adapter;
     private Button btnadd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,21 +40,32 @@ public class InfoCircuitActivity extends AppCompatActivity {
 
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
-        String year = new String(extras.getString("year"));
-        String position = new String(extras.getString("position"));
-        String Racename = new String(extras.getString("Racename"));
-
-        textnamecircuit.setText(Racename +" : "+year);
-
-        int positionInt = Integer.parseInt(position);
-        positionInt++;
+        String race = new String(extras.getString("Race"));
 
         adapter = new MyAdapteInfoCircuit();
         list.setAdapter(adapter);
 
-        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
-        String url = "https://ergast.com/api/f1/"+year+"/"+positionInt+"/results.json";
-        task.execute(url);
 
+
+
+        String url;
+        if(race.equals("last"))        //If it's the last race
+        {
+            url = "https://ergast.com/api/f1/current/last/results.json";
+        }
+        else
+        {
+            String year = new String(extras.getString("year"));
+            String position = new String(extras.getString("position"));
+            String Racename = new String(extras.getString("Racename"));
+
+            int positionInt = Integer.parseInt(position);
+            positionInt++;
+
+            url = "https://ergast.com/api/f1/"+year+"/"+positionInt+"/results.json";
+        }
+
+        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
+        task.execute(url);
     }
 }
