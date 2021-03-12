@@ -1,9 +1,11 @@
 package com.example.project.async;
 
+import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.project.Circuits;
+import com.example.project.activities.InfoCircuitActivity;
 import com.example.project.adapters.MyAdapteInfoCircuit;
 import com.example.project.adapters.MyAdapterCircuits;
 import com.example.project.utils.InfoCircuit;
@@ -64,7 +66,19 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             JSONObject items2 = items.getJSONObject("RaceTable");
             JSONArray items3 = items2.getJSONArray("Races");
             JSONObject entry = items3.getJSONObject(0);
+
+            JSONObject circuitarray = entry.getJSONObject("Circuit");
+            String circuit_name = circuitarray.getString("circuitName");//get the item name : media
+            JSONObject Locationarray = circuitarray.getJSONObject("Location");
+            String circuit_place = Locationarray.getString("locality");
+
+
+
             JSONArray Resultarray = entry.getJSONArray("Results");
+//            String racename = entry.getString("raceName");
+            String racename = circuit_name + ", " + circuit_place;
+
+            InfoCircuitActivity.textnamecircuit.setText(racename);
 
             for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
             {
@@ -73,8 +87,9 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 String position = entry2.getString("position");//get the item name : position
 
                 JSONObject Driverarray = entry2.getJSONObject("Driver");
-                String driver = Driverarray.getString("givenName");//get the item name : givenName
-                driver += Driverarray.getString("driverId");
+                String FirstName = Driverarray.getString("givenName");//get the item name : givenName
+                String FamilyName = Driverarray.getString("familyName");
+                String driver = FirstName + " " + FamilyName;
                 Log.i("CIO", "URL media: " + driver);
 
                 InfoCircuit resultcircuit = new InfoCircuit(number,position,driver);
