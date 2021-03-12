@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textInformation2" type="id"/>
+    <item name="btnAdd" type="id"/>
+    <item name="textNumber" type="id"/>
+    <item name="textNationality" type="id"/>
+    <item name="textName2" type="id"/>
+    <item name="textNumber2" type="id"/>
+    <item name="textNationality2" type="id"/>
+    <item name="textDOB2" type="id"/>
+    <item name="text_info" type="id"/>
+    <item name="textName" type="id"/>
+    <item name="textDOB" type="id"/>
+    <item name="textInformation" type="id"/>
+</resources>

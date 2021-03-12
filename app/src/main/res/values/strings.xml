@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string name="search">Search</string>
+    <string name="search2">Search:</string>
+    <string name="year">Year</string>
+    <string name="year2">Year:</string>
+    <string name="nationality2">Nationality :</string>
+    <string name="name2">Name :</string>
+    <string name="nationality">Nationality</string>
+    <string name="name">Name</string>
+    <string name="info">Info</string>
+</resources>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DriverActivity">
+
+
+    <Button
+        android:id="@+id/btnback2"
+        android:layout_width="79dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/red"
+        android:shadowColor="@color/black"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_InfoCircuits" />
+
+    <TextView
+        android:id="@+id/text_search"
+        android:layout_width="318dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:text="Search Drivers"
+        android:background="@drawable/text_view_border"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextYear"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="24dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/year"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@+id/text_search_Name"
+        app:layout_constraintTop_toBottomOf="@id/text_search"
+        android:autofillHints="">
+    </EditText>
+
+    <TextView
+        android:id="@+id/text_search_Year"
+        android:layout_width="91dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/year2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_search" />
+
+    <Button
+        android:id="@+id/btnYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/red"
+        android:shadowColor="@color/black"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextYear"
+        app:layout_constraintTop_toBottomOf="@+id/text_search" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="30dp"
+        android:autofillHints=""
+        android:hint="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@+id/text_search_Year"
+        app:layout_constraintTop_toBottomOf="@+id/editTextYear"></EditText>
+
+    <TextView
+        android:id="@+id/text_search_Name"
+        android:layout_width="91dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="@string/name2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_search_Year" />
+
+    <Button
+        android:id="@+id/btnName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginStart="21dp"
+        android:backgroundTint="@color/red"
+        android:shadowColor="@color/black"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toEndOf="@+id/editTextYear"
+        app:layout_constraintTop_toBottomOf="@+id/btnYear" />
+
+    <ListView
+        android:id="@+id/list_InfoCircuits"
+        android:layout_width="389dp"
+        android:layout_height="283dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName">
+
+    </ListView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
