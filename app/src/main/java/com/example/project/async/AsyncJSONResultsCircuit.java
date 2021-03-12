@@ -21,6 +21,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject> {
 
@@ -69,8 +71,11 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
 
             JSONObject circuitarray = entry.getJSONObject("Circuit");
             String circuit_name = circuitarray.getString("circuitName");//get the item name : media
+//            String grandprix_date = entry.getString("date");
+            LocalDate grandprix_date = LocalDate.parse(entry.getString("date"));
             JSONObject Locationarray = circuitarray.getJSONObject("Location");
             String circuit_place = Locationarray.getString("locality");
+
 
 
 
@@ -79,6 +84,8 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             String racename = circuit_name + ", " + circuit_place;
 
             InfoCircuitActivity.textnamecircuit.setText(racename);
+            InfoCircuitActivity.dategrandprix.setText(String.valueOf(grandprix_date.getDayOfMonth() + " / " + grandprix_date.getMonthValue() + " / " + grandprix_date.getYear()));
+//            InfoCircuitActivity.dategrandprix.setText(grandprix_date);
 
             for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
             {

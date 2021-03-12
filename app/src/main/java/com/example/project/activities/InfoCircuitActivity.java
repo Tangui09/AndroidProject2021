@@ -24,6 +24,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
 
     public AppCompatActivity myActivity;
     public static TextView textnamecircuit;
+    public static TextView dategrandprix;
     private TextView text_circuit;
     private ListView list;
     private MyAdapteInfoCircuit adapter;
@@ -35,6 +36,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_circuit);
 
         textnamecircuit = findViewById(R.id.textnamecircuit);
+        dategrandprix = findViewById(R.id.dateCircuit);
         btnadd = findViewById(R.id.btnAdd);
         list = findViewById(R.id.list_InfoCircuits);
 
