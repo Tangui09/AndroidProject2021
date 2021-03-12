@@ -66,9 +66,17 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             JSONObject items2 = items.getJSONObject("RaceTable");
             JSONArray items3 = items2.getJSONArray("Races");
             JSONObject entry = items3.getJSONObject(0);
-            JSONArray Resultarray = entry.getJSONArray("Results");
 
-            String racename = entry.getString("raceName");
+            JSONObject circuitarray = entry.getJSONObject("Circuit");
+            String circuit_name = circuitarray.getString("circuitName");//get the item name : media
+            JSONObject Locationarray = circuitarray.getJSONObject("Location");
+            String circuit_place = Locationarray.getString("locality");
+
+
+
+            JSONArray Resultarray = entry.getJSONArray("Results");
+//            String racename = entry.getString("raceName");
+            String racename = circuit_name + ", " + circuit_place;
 
             InfoCircuitActivity.textnamecircuit.setText(racename);
 
@@ -79,8 +87,9 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 String position = entry2.getString("position");//get the item name : position
 
                 JSONObject Driverarray = entry2.getJSONObject("Driver");
-                String driver = Driverarray.getString("givenName");//get the item name : givenName
-                driver += Driverarray.getString("driverId");
+                String FirstName = Driverarray.getString("givenName");//get the item name : givenName
+                String FamilyName = Driverarray.getString("familyName");
+                String driver = FirstName + " " + FamilyName;
                 Log.i("CIO", "URL media: " + driver);
 
                 InfoCircuit resultcircuit = new InfoCircuit(number,position,driver);
