@@ -24,6 +24,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
 
     public AppCompatActivity myActivity;
     public static TextView textnamecircuit;
+    public static TextView textplacecircuit;
     public static TextView dategrandprix;
     private TextView text_circuit;
     private ListView list;
@@ -36,6 +37,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_circuit);
 
         textnamecircuit = findViewById(R.id.textnamecircuit);
+        textplacecircuit = findViewById(R.id.textplacecircuit);
         dategrandprix = findViewById(R.id.dateCircuit);
         btnadd = findViewById(R.id.btnAdd);
         list = findViewById(R.id.list_InfoCircuits);
@@ -46,6 +48,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
 
         adapter = new MyAdapteInfoCircuit();
         list.setAdapter(adapter);
+        list.setDivider(null);
 
 
 

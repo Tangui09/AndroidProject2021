@@ -38,10 +38,15 @@ public class MyAdapteInfoCircuit extends BaseAdapter {
         // ConvertView which allows to display all the names on the screen
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.textviewlayout_universal, parent, false);
+            convertView = inflater.inflate(R.layout.textviewlayout_driverresultrace, parent, false);
         }
-        TextView text = ((TextView)convertView.findViewById(R.id.textView_universal));
-        text.setText(vector.get(position).getPosition()+" | "+vector.get(position).getNumber()+" | "+vector.get(position).getDriver());
+        TextView pos = ((TextView)convertView.findViewById(R.id.textViewPosition));
+        TextView firstname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
+        TextView lastname = ((TextView)convertView.findViewById(R.id.textViewDriverLastname));
+
+        pos.setText(vector.get(position).getPosition());
+        firstname.setText(vector.get(position).getDriver_firstname());
+        lastname.setText(vector.get(position).getDriver_lastname());
         return convertView;
     }
 
