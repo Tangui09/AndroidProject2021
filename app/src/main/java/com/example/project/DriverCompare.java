@@ -14,6 +14,11 @@ public class DriverCompare implements Comparable<DriverCompare>{
         this.bestperformance = bestperformance;
         this.numberrace = numberrace;
     }
+    public DriverCompare(String drivername){
+        this.Drivername = drivername;
+        this.bestperformance = "compare list";
+        this.Numberwin = 0;
+    }
 
     public String getDrivername() {
         return Drivername;
