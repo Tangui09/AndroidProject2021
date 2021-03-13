@@ -43,10 +43,12 @@ public class MyAdapteInfoCircuit extends BaseAdapter {
         TextView pos = ((TextView)convertView.findViewById(R.id.textViewPosition));
         TextView firstname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
         TextView lastname = ((TextView)convertView.findViewById(R.id.textViewDriverLastname));
+        TextView points = ((TextView)convertView.findViewById(R.id.textViewPoints));
 
         pos.setText(vector.get(position).getPosition());
         firstname.setText(vector.get(position).getDriver_firstname());
         lastname.setText(vector.get(position).getDriver_lastname());
+        points.setText(vector.get(position).getPoints());
         return convertView;
     }
 

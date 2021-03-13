@@ -89,6 +89,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 JSONObject entry2 = Resultarray.getJSONObject(i);
                 String number = entry2.getString("number");//get the item name : number
                 String position = entry2.getString("position");//get the item name : position
+                String points = "+" + entry2.getString("points");//get the item name : position
 
                 JSONObject Driverarray = entry2.getJSONObject("Driver");
                 String FirstName = Driverarray.getString("givenName");//get the item name : givenName
@@ -96,7 +97,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 String driver = FirstName + " " + FamilyName;
                 Log.i("CIO", "URL media: " + driver);
 
-                InfoCircuit resultcircuit = new InfoCircuit(number,position,driver, FirstName, FamilyName);
+                InfoCircuit resultcircuit = new InfoCircuit(number,position,driver, FirstName, FamilyName, points);
 
                 myadapter.dd(resultcircuit);// add it to Myadapter()
 
