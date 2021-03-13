@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.project.DriverCompare;
 import com.example.project.async.AsyncJSONDatacompare;
 import com.example.project.adapters.MyAdapter;
 import com.example.project.adapters.MyAdapterCompare;
@@ -30,7 +31,7 @@ public class CompareActivity extends AppCompatActivity {
     private CheckBox checkbestperf;
     private EditText editTextYear;
     private EditText editTextCircuits;
-    private MyAdapter myadapter;
+    private MyAdapterCompare myadapter;
     private ListView list;
     private String[] datasplit;
 
@@ -54,11 +55,12 @@ public class CompareActivity extends AppCompatActivity {
         datasplit = compare.split(",");//split the full name in order to have just the name for http request
 
         //display the name of drivers on comparator
-        myadapter = new MyAdapter();
+        myadapter = new MyAdapterCompare();
         list.setAdapter(myadapter);
         list.setDivider(null);
         for(int i =0;i<datasplit.length;i++){
-            myadapter.dd(datasplit[i]);// add it to Myadapter()
+            DriverCompare driver = new DriverCompare(datasplit[i]);
+            myadapter.dd(driver);// add it to Myadapter()
         }
         myadapter.notifyDataSetChanged();
 
@@ -68,7 +70,7 @@ public class CompareActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(PREF_DRIVERS, " ");
                 editor.apply();
-                myadapter = new MyAdapter();
+                myadapter = new MyAdapterCompare();
                 list.removeAllViewsInLayout();
                 myadapter.notifyDataSetChanged();
             }
@@ -86,16 +88,22 @@ public class CompareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //clear the list
-                myadapter = new MyAdapter();
-                list.removeAllViewsInLayout();
-                myadapter.notifyDataSetChanged();
-                list.setAdapter(myadapter);
-
                 if(checkbestperf.isChecked() ) {
+                    //clear the list
+//                    myadapter = new MyAdapterCompare();
+                    list.removeAllViewsInLayout();
+                    myadapter.notifyDataSetChanged();
+                    list.setAdapter(myadapter);
+
                     taskcompare("bestperf","");//create a task MyAdapterCompare to obtain best perf results
                 }
                 else if(checkwin.isChecked()){
+                    //clear the list
+//                    myadapter = new MyAdapterCompare();
+                    list.removeAllViewsInLayout();
+                    myadapter.notifyDataSetChanged();
+                    list.setAdapter(myadapter);
+
                     taskcompare("wins","/1");//create a task MyAdapterCompare to obtain wins races results
                 }
             }
