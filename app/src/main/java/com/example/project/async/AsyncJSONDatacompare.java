@@ -82,7 +82,7 @@ public class AsyncJSONDatacompare extends AsyncTask<String, Void, JSONObject> {
             }
             //to make a ratio race placement
             if(criteria.equals("bestperf")&& (items3.length()>1)){
-                number = number/items3.length();
+               number = number/items3.length();
             }
 
             Log.i("JFL", "add to compare");

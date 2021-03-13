@@ -57,7 +57,7 @@ public class MyAdapterCompare extends BaseAdapter {
         return convertView;
     }
 
-    public  void dd(DriverCompare driver){
+    public void dd(DriverCompare driver){
 
         vector.add(driver);
         Log.i("JFL", "Adding to adapter: " + driver.getNumberwin());
@@ -70,6 +70,13 @@ public class MyAdapterCompare extends BaseAdapter {
         }
 
     }
+    public void sortcroissant(){
+        Collections.sort(vector);
+    }
+    public void sortdecroissant(){
+        Collections.sort(vector, Collections.reverseOrder());
+    }
+
 
 }
 
