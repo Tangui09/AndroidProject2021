@@ -77,14 +77,11 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             String circuit_place = Locationarray.getString("locality");
 
 
-
-
             JSONArray Resultarray = entry.getJSONArray("Results");
-//            String racename = entry.getString("raceName");
-            String racename = circuit_name + ", " + circuit_place;
 
-            InfoCircuitActivity.textnamecircuit.setText(racename);
-            InfoCircuitActivity.dategrandprix.setText(String.valueOf(grandprix_date.getDayOfMonth() + " / " + grandprix_date.getMonthValue() + " / " + grandprix_date.getYear()));
+            InfoCircuitActivity.textnamecircuit.setText(circuit_name);
+            InfoCircuitActivity.textplacecircuit.setText(circuit_place);
+            InfoCircuitActivity.dategrandprix.setText(String.valueOf(grandprix_date.getDayOfMonth() + "/" + grandprix_date.getMonthValue() + "/" + grandprix_date.getYear()));
 //            InfoCircuitActivity.dategrandprix.setText(grandprix_date);
 
             for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
@@ -92,6 +89,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 JSONObject entry2 = Resultarray.getJSONObject(i);
                 String number = entry2.getString("number");//get the item name : number
                 String position = entry2.getString("position");//get the item name : position
+                String points = "+" + entry2.getString("points");//get the item name : position
 
                 JSONObject Driverarray = entry2.getJSONObject("Driver");
                 String FirstName = Driverarray.getString("givenName");//get the item name : givenName
@@ -99,7 +97,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                 String driver = FirstName + " " + FamilyName;
                 Log.i("CIO", "URL media: " + driver);
 
-                InfoCircuit resultcircuit = new InfoCircuit(number,position,driver);
+                InfoCircuit resultcircuit = new InfoCircuit(number,position,driver, FirstName, FamilyName, points);
 
                 myadapter.dd(resultcircuit);// add it to Myadapter()
 

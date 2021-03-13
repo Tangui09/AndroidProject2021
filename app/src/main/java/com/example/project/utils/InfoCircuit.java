@@ -4,10 +4,17 @@ public class InfoCircuit {
     private String number;
     private String position;
     private String driver;
-    public InfoCircuit(String number,String position, String driver){
+    private String driver_firstname;
+    private String driver_lastname;
+    private String points;
+
+    public InfoCircuit(String number,String position, String driver, String driver_firstname, String driver_lastname, String points){
         this.driver = driver;
         this.number = number;
         this.position = position;
+        this.driver_firstname = driver_firstname;
+        this.driver_lastname = driver_lastname;
+        this.points = points;
     }
 
     public String getNumber() {
@@ -21,4 +28,10 @@ public class InfoCircuit {
     public String getDriver() {
         return driver;
     }
+
+    public String getDriver_firstname() { return driver_firstname; }
+
+    public String getDriver_lastname() { return driver_lastname; }
+
+    public String getPoints() { return points; }
 }
