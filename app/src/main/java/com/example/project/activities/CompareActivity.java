@@ -86,16 +86,22 @@ public class CompareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //clear the list
-                myadapter = new MyAdapter();
-                list.removeAllViewsInLayout();
-                myadapter.notifyDataSetChanged();
-                list.setAdapter(myadapter);
-
                 if(checkbestperf.isChecked() ) {
+                    //clear the list
+                    myadapter = new MyAdapter();
+                    list.removeAllViewsInLayout();
+                    myadapter.notifyDataSetChanged();
+                    list.setAdapter(myadapter);
+
                     taskcompare("bestperf","");//create a task MyAdapterCompare to obtain best perf results
                 }
                 else if(checkwin.isChecked()){
+                    //clear the list
+                    myadapter = new MyAdapter();
+                    list.removeAllViewsInLayout();
+                    myadapter.notifyDataSetChanged();
+                    list.setAdapter(myadapter);
+
                     taskcompare("wins","/1");//create a task MyAdapterCompare to obtain wins races results
                 }
             }

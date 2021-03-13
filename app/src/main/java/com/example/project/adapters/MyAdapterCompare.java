@@ -16,6 +16,7 @@ import java.util.Vector;
 
 public class MyAdapterCompare extends BaseAdapter {
     private Vector<DriverCompare> vector;
+    private int counter = 1 ;
     public MyAdapterCompare() {
         vector = new Vector<DriverCompare>();
     }
@@ -44,12 +45,12 @@ public class MyAdapterCompare extends BaseAdapter {
         }
         TextView text = ((TextView)convertView.findViewById(R.id.textView));
         if(vector.get(position).getBestperformance().equals("bestperf")){
-            text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin());
+            text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin()+" ratio on "+vector.get(position).getNumberrace()+" races" );
         }
         else{
             text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin()+" wins");
         }
-
+        counter++;
         return convertView;
     }
 
