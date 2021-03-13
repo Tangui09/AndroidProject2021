@@ -27,6 +27,7 @@ public class CompareActivity extends AppCompatActivity {
     private Button btnaddcompare;
     private Button btncompare;
     private Button btnback;
+    private Button btnfilter;
     private CheckBox checkwin;
     private CheckBox checkbestperf;
     private EditText editTextYear;
@@ -34,6 +35,7 @@ public class CompareActivity extends AppCompatActivity {
     private MyAdapterCompare myadapter;
     private ListView list;
     private String[] datasplit;
+    private String ordercompare = "croissant";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class CompareActivity extends AppCompatActivity {
         btnaddcompare = findViewById(R.id.btnaddcompare);
         btncompare = findViewById(R.id.btncompare);
         btnback = findViewById(R.id.btnback);
+        btnfilter = findViewById(R.id.btnfilter);
         checkwin = findViewById(R.id.checkwin);
         checkbestperf = findViewById(R.id.checkbestperf);
         editTextYear = findViewById(R.id.editTextYear);
@@ -90,20 +93,21 @@ public class CompareActivity extends AppCompatActivity {
 
                 if(checkbestperf.isChecked() ) {
                     //clear the list
-//                    myadapter = new MyAdapterCompare();
+                    myadapter = new MyAdapterCompare();
                     list.removeAllViewsInLayout();
                     myadapter.notifyDataSetChanged();
-                    list.setAdapter(myadapter);
 
+                    ordercompare = "croissant";
                     taskcompare("bestperf","");//create a task MyAdapterCompare to obtain best perf results
+
                 }
                 else if(checkwin.isChecked()){
                     //clear the list
-//                    myadapter = new MyAdapterCompare();
+                    myadapter = new MyAdapterCompare();
                     list.removeAllViewsInLayout();
                     myadapter.notifyDataSetChanged();
-                    list.setAdapter(myadapter);
 
+                    ordercompare = "decroissant";
                     taskcompare("wins","/1");//create a task MyAdapterCompare to obtain wins races results
                 }
             }
@@ -115,17 +119,30 @@ public class CompareActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnfilter.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(ordercompare.equals("croissant")){
+                    myadapter.sortdecroissant();
+                    ordercompare = "decroissant";
+                }
+                else{
+                    myadapter.sortcroissant();
+                    ordercompare = "croissant";
+                }
+                myadapter.notifyDataSetChanged();
+            }
+        });
     }
 
     public void taskcompare(String criteria, String wins){
         String texteditTextYear = editTextYear.getText().toString();//if the user enter a year
         String texteeditTextCircuits = editTextCircuits.getText().toString();
 
-        MyAdapterCompare myadapter2 = new MyAdapterCompare();
-        list.setAdapter(myadapter2);
+        list.setAdapter(myadapter);
         for(int i=0;i<datasplit.length;i++){
             String url;
-            AsyncJSONDatacompare task = new AsyncJSONDatacompare(myadapter2,criteria);
+            AsyncJSONDatacompare task = new AsyncJSONDatacompare(myadapter,criteria);
 
             if((!(texteditTextYear.matches("")))&&(!(texteeditTextCircuits.matches("")))){
                  url = "https://ergast.com/api/f1/"+texteditTextYear+"/drivers/"+datasplit[i]+"/circuits/"+texteeditTextCircuits+"/results"+wins+".json";
