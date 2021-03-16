@@ -1,6 +1,7 @@
 package com.example.project.utils;
 
-public class InfoCircuit {
+public class InfoCircuit
+{
     private String number;
     private String position;
     private String driver;

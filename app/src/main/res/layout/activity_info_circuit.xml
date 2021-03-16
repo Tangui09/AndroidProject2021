@@ -45,14 +45,13 @@
         android:id="@+id/btnback4"
         android:layout_width="79dp"
         android:layout_height="43dp"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
         android:shadowColor="@color/black"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutResultsRace" />
+        app:layout_constraintTop_toBottomOf="@+id/FrameLayoutFragment" />
 
     <TextView
         android:id="@+id/dateCircuit"
@@ -114,65 +113,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
     <FrameLayout
-        android:id="@+id/frameLayoutResultsRace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/FrameLayoutFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="67dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="210dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:text="Lastname"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="67dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:text="Position"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="67dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="335dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:text="Points"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="67dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:text="Firstname"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <ListView
-            android:id="@+id/list_InfoCircuits"
-            android:layout_width="416dp"
-            android:layout_height="233dp"
-            android:layout_marginTop="35dp" />
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

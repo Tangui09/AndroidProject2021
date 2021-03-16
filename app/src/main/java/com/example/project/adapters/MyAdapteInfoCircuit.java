@@ -12,8 +12,10 @@ import com.example.project.utils.InfoCircuit;
 
 import java.util.Vector;
 
-public class MyAdapteInfoCircuit extends BaseAdapter {
+public class MyAdapteInfoCircuit extends BaseAdapter
+{
     private Vector<InfoCircuit> vector;
+
     public MyAdapteInfoCircuit() {
         vector = new Vector<InfoCircuit>();
     }
