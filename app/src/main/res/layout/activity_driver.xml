@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/view_head_main2"
-        android:layout_width="366dp"
+        android:layout_width="0dp"
         android:layout_height="220dp"
         android:background="@color/red"
         app:layout_constraintCircleRadius="50dp"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/text_search"
-        android:layout_width="318dp"
+        android:layout_width="0dp"
         android:layout_height="58dp"
         android:gravity="center"
         android:text="Search Drivers"
@@ -50,6 +50,7 @@
         android:layout_width="61dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
+        android:layout_marginRight="20dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
@@ -78,11 +79,12 @@
         android:layout_width="61dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="26dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnYear" />
 

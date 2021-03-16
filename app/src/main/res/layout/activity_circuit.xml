@@ -9,7 +9,7 @@
 
     <View
         android:id="@+id/view_head_main2"
-        android:layout_width="366dp"
+        android:layout_width="0dp"
         android:layout_height="150dp"
         android:background="@color/red"
         app:layout_constraintCircleRadius="50dp"
@@ -64,6 +64,7 @@
         android:layout_width="61dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="25dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
@@ -75,7 +76,7 @@
 
     <TextView
         android:id="@+id/text_search4"
-        android:layout_width="302dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
         android:gravity="center"
         android:text="Search Circuits"

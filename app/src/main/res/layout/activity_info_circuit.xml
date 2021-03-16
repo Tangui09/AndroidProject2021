@@ -15,16 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textplacecircuit" />
 
-    <ListView
-        android:id="@+id/list_InfoCircuits"
-        android:layout_width="416dp"
-        android:layout_height="233dp"
-        android:layout_marginTop="204dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textnamecircuit" />
-
     <TextView
         android:id="@+id/textnamecircuit"
         android:layout_width="221dp"
@@ -55,14 +45,14 @@
         android:id="@+id/btnback4"
         android:layout_width="79dp"
         android:layout_height="43dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
         android:shadowColor="@color/black"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_InfoCircuits" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <TextView
         android:id="@+id/dateCircuit"
@@ -84,8 +74,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="FORMULA 1"
-        android:textSize="30sp"
         android:textColor="@color/black"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +85,7 @@
         android:layout_width="383dp"
         android:layout_height="43dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="RESULT OF THE RACE"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -103,60 +93,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="256dp"
-        android:gravity="center"
-        android:text="Position"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
+    <Button
+        android:id="@+id/btnSwitchToDrivers"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="Drivers"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="256dp"
-        android:gravity="center"
-        android:text="Firstname"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnSwitchToTeams"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:text="Teams"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="256dp"
-        android:gravity="center"
-        android:text="Lastname"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers">
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="67dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="256dp"
-        android:gravity="center"
-        android:text="Points"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="67dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Lastname"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="67dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Position"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="67dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Points"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="67dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Firstname"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/list_InfoCircuits"
+            android:layout_width="416dp"
+            android:layout_height="233dp"
+            android:layout_marginTop="35dp" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
