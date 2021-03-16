@@ -1,24 +1,21 @@
 package com.example.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.Fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.project.DriverResultFragment;
 import com.example.project.R;
+import com.example.project.TeamResultFragment;
 import com.example.project.adapters.MyAdapteInfoCircuit;
-import com.example.project.adapters.MyAdapter;
-import com.example.project.async.AsyncJSONInfoDriver;
 import com.example.project.async.AsyncJSONResultsCircuit;
-
-import static com.example.project.utils.Constant.PREF_COMPARE;
-import static com.example.project.utils.Constant.PREF_DRIVERS;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
@@ -31,6 +28,8 @@ public class InfoCircuitActivity extends AppCompatActivity {
     private MyAdapteInfoCircuit adapter;
     private Button btnadd;
 
+    Button driverFragment, teamFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,9 @@ public class InfoCircuitActivity extends AppCompatActivity {
         btnadd = findViewById(R.id.btnAdd);
         list = findViewById(R.id.list_InfoCircuits);
 
+        driverFragment = (Button) findViewById(R.id.btnSwitchToDrivers);
+        teamFragment = (Button) findViewById(R.id.btnSwitchToTeams);
+
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
         String race = new String(extras.getString("Race"));
@@ -51,6 +53,22 @@ public class InfoCircuitActivity extends AppCompatActivity {
         list.setDivider(null);
 
 
+
+        driverFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // load First Fragment
+                loadFragment(new DriverResultFragment());
+            }
+        });
+        // perform setOnClickListener event on Second Button
+        teamFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            // load Second Fragment
+                loadFragment(new TeamResultFragment());
+            }
+        });
 
 
         String url;
@@ -72,5 +90,17 @@ public class InfoCircuitActivity extends AppCompatActivity {
 
         AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
         task.execute(url);
+    }
+
+
+    private void loadFragment(Fragment fragment)
+    {
+        // create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // replace the FrameLayout with new Fragment
+        fragmentTransaction.replace(R.id.frameLayoutResultsRace, fragment);
+        fragmentTransaction.commit(); // save the changes
     }
 }
