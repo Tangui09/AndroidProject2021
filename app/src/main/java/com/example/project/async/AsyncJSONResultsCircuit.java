@@ -1,13 +1,10 @@
 package com.example.project.async;
 
-import android.icu.text.IDNA;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.project.Circuits;
 import com.example.project.activities.InfoCircuitActivity;
-import com.example.project.adapters.MyAdapteInfoCircuit;
-import com.example.project.adapters.MyAdapterCircuits;
+import com.example.project.adapters.MyAdapteInfoDriverCircuit;
 import com.example.project.utils.InfoCircuit;
 
 import org.json.JSONArray;
@@ -22,13 +19,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject> {
 
-    private MyAdapteInfoCircuit myadapter;
+    private MyAdapteInfoDriverCircuit myadapter;
 
-    public AsyncJSONResultsCircuit(MyAdapteInfoCircuit adapter) {
+    public AsyncJSONResultsCircuit(MyAdapteInfoDriverCircuit adapter) {
         this.myadapter = adapter;
     }
 

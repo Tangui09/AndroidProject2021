@@ -7,12 +7,9 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.project.R;
-import com.example.project.adapters.MyAdapteInfoCircuit;
-import com.example.project.async.AsyncJSONResultsCircuit;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
@@ -21,7 +18,6 @@ public class InfoCircuitActivity extends AppCompatActivity {
     public static TextView textplacecircuit;
     public static TextView dategrandprix;
     private TextView text_circuit;
-    private MyAdapteInfoCircuit adapter;
     private Button btnadd;
 
     Button driverFragment, teamFragment;
@@ -50,11 +46,6 @@ public class InfoCircuitActivity extends AppCompatActivity {
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
         String race = new String(extras.getString("Race"));
-
-        adapter = new MyAdapteInfoCircuit();
-        list.setAdapter(adapter);
-        list.setDivider(null);
-
 
 
         driverFragment.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +88,6 @@ public class InfoCircuitActivity extends AppCompatActivity {
             url = "https://ergast.com/api/f1/"+year+"/"+positionInt+"/results.json";
         }
 
-        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
-        task.execute(url);
+        firstFragment.startAsync(url);
     }
 }
