@@ -14,8 +14,7 @@ import com.example.project.async.AsyncJSONResultsCircuit;
 
 public class Fragment_DriverResult extends Fragment
 {
-    private ListView list;
-    private MyAdapteInfoDriverCircuit adapter;
+    private MyAdapteInfoDriverCircuit adapter = new MyAdapteInfoDriverCircuit();
 
     public Fragment_DriverResult() {
         // Required empty public constructor
@@ -31,9 +30,8 @@ public class Fragment_DriverResult extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_driver_result_, container, false);
-        list = view.findViewById(R.id.list_DriverInfo);
+        ListView list = view.findViewById(R.id.list_DriverInfo);
 
-        adapter = new MyAdapteInfoDriverCircuit();
         list.setAdapter(adapter);
         list.setDivider(null);
 

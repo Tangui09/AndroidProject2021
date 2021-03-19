@@ -9,6 +9,8 @@ public class InfoCircuitDriver
     private String driver_lastname;
     private int points;
 
+    public InfoCircuitDriver(){}
+
     public InfoCircuitDriver(String number, String position, String driver, String driver_firstname, String driver_lastname, int points){
         this.driver = driver;
         this.number = number;

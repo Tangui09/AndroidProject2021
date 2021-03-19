@@ -32,8 +32,8 @@ import java.util.TreeMap;
 
 public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject> {
 
-    private MyAdapteInfoDriverCircuit myadapterdriver;
-    private MyAdapteInfoTeamCircuit myadapterteam;
+    private MyAdapteInfoDriverCircuit myadapterdriver = new MyAdapteInfoDriverCircuit();
+    private MyAdapteInfoTeamCircuit myadapterteam = new MyAdapteInfoTeamCircuit();
     private int condFragment;
 
     public AsyncJSONResultsCircuit(MyAdapteInfoDriverCircuit adapter) {
@@ -103,7 +103,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                     JSONObject entry2 = Resultarray.getJSONObject(i);
                     String number = entry2.getString("number");//get the item name : number
                     String position = entry2.getString("position");//get the item name : position
-                    String points = "+" + entry2.getString("points");//get the item name : position
+                    int points = Integer.parseInt(entry2.getString("points"));//get the item name : position
 
                     JSONObject Driverarray = entry2.getJSONObject("Driver");
                     String FirstName = Driverarray.getString("givenName");//get the item name : givenName
@@ -111,7 +111,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                     String driver = FirstName + " " + FamilyName;
                     Log.i("CIO", "URL media: " + driver);
 
-                    InfoCircuitDriver resultcircuit = new InfoCircuitDriver(number,position,driver, FirstName, FamilyName, Integer.parseInt(points));
+                    InfoCircuitDriver resultcircuit = new InfoCircuitDriver(number,position,driver, FirstName, FamilyName, points);
 
                     myadapterdriver.dd(resultcircuit);// add it to Myadapter()
 

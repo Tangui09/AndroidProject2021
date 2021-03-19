@@ -10,12 +10,12 @@ import android.widget.ListView;
 
 import com.example.project.R;
 import com.example.project.adapters.MyAdapteInfoDriverCircuit;
+import com.example.project.adapters.MyAdapteInfoTeamCircuit;
 import com.example.project.async.AsyncJSONResultsCircuit;
 
 public class Fragment_TeamResult extends Fragment {
 
-    private ListView list;
-    private MyAdapteInfoDriverCircuit adapter;
+    private MyAdapteInfoTeamCircuit adapter = new MyAdapteInfoTeamCircuit();
 
     public Fragment_TeamResult() {
         // Required empty public constructor
@@ -30,10 +30,8 @@ public class Fragment_TeamResult extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team_result_, container, false);
+        ListView list = view.findViewById(R.id.list_TeamInfo);
 
-        list = list.findViewById(R.id.list_TeamInfo);
-
-        adapter = new MyAdapteInfoDriverCircuit();
         list.setAdapter(adapter);
         list.setDivider(null);
 

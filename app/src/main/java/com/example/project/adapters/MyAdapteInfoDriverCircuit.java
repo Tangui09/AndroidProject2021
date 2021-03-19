@@ -50,7 +50,7 @@ public class MyAdapteInfoDriverCircuit extends BaseAdapter
         pos.setText(vector.get(position).getPosition());
         firstname.setText(vector.get(position).getDriver_firstname());
         lastname.setText(vector.get(position).getDriver_lastname());
-        points.setText(vector.get(position).getPoints());
+        points.setText(String.valueOf(vector.get(position).getPoints()));
         return convertView;
     }
 
