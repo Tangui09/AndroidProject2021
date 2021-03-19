@@ -40,7 +40,7 @@ public class Fragment_DriverResult extends Fragment
 
     public void startAsync(String url)
     {
-        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
+        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter = new MyAdapteInfoDriverCircuit());
         task.execute(url);
     }
 }

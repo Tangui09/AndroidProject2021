@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.project.R;
+import com.example.project.adapters.MyAdapter;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class InfoCircuitActivity extends AppCompatActivity {
     public static TextView dategrandprix;
     private TextView text_circuit;
     private Button btnadd;
+
+    private String url;
 
     Button driverFragment, teamFragment;
 
@@ -56,6 +59,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.FrameLayoutFragment, firstFragment);
 //                fragmentTransaction.addToBackStack(null);   //Click back to previous fragment
                 fragmentTransaction.commit();
+                firstFragment.startAsync(url);
             }
         });
         // perform setOnClickListener event on Second Button
@@ -67,11 +71,11 @@ public class InfoCircuitActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.FrameLayoutFragment, secondFragment);
 //                fragmentTransaction.addToBackStack(null);   //Click back to previous fragment
                 fragmentTransaction.commit();
+                secondFragment.startAsync(url);
             }
         });
 
 
-        String url;
         if(race.equals("last"))        //If it's the last race
         {
             url = "https://ergast.com/api/f1/current/last/results.json";

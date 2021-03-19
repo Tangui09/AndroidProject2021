@@ -38,11 +38,13 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
 
     public AsyncJSONResultsCircuit(MyAdapteInfoDriverCircuit adapter) {
         this.myadapterdriver = adapter;
+        Log.i("FRAGMENT BUTTON", "DRIVER");
         condFragment = 0;
     }
 
     public AsyncJSONResultsCircuit(MyAdapteInfoTeamCircuit adapter) {
         this.myadapterteam = adapter;
+        Log.i("FRAGMENT BUTTON", "TEAM");
         condFragment = 1;
     }
 
@@ -142,17 +144,7 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
                     }
                 }
 
-                HashMap<String, Integer> orderedTeamVector = sortHashMapByValues(teamVector);
-
-                int pos = 1;
-                for ( Object key : orderedTeamVector.keySet() )
-                {
-                    InfoCircuitTeam info = new InfoCircuitTeam(String.valueOf(pos), String.valueOf(key), orderedTeamVector.get(key));
-                    myadapterteam.dd(info);// add it to Myadapter()
-                    pos++;
-                }
-
-                myadapterteam.notifyDataSetChanged();
+                sortHashMapByValues(teamVector);
             }
 
 
@@ -177,32 +169,49 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
     }
 
 
-    public HashMap<String, Integer> sortHashMapByValues( HashMap<String, Integer> passedMap )
+
+    public void sortHashMapByValues( HashMap<String, Integer> passedMap)
     {
         List<String> mapKeys = new ArrayList<>(passedMap.keySet());
-        List<Integer> mapValues = new ArrayList<>(passedMap.values());
-        Collections.sort(mapValues);
-        Collections.sort(mapKeys);
+        HashMap<String, Integer> sortedMap = new HashMap<>();
+        int pos = 1;
 
-        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
+        String teamChecked;
+        String BestTeam = "";
 
-        for (int val : mapValues)
+        while(mapKeys.size() > 0)
         {
             Iterator<String> keyIt = mapKeys.iterator();
+            int max_score = -1;
+            BestTeam = "";
 
-            while (keyIt.hasNext()) {
-                String key = keyIt.next();
-                Integer comp1 = passedMap.get(key);
-                Integer comp2 = val;
+            while (keyIt.hasNext())     //compare with a key
+            {
+                teamChecked = keyIt.next();
 
-                if (comp1 < comp2) {
-                    keyIt.remove();
-                    sortedMap.put(key, comp2);
-                    break;
+                if(max_score == -1)
+                {
+                    max_score = passedMap.get(teamChecked);
+                    BestTeam = teamChecked;
+                    continue;
+                }
+                Integer current_score = passedMap.get(teamChecked);
+
+                if (max_score < current_score)                      //Check if nothing is bigger
+                {
+                    max_score = current_score;
+                    BestTeam = teamChecked;
                 }
             }
+
+            mapKeys.remove(BestTeam);
+            sortedMap.put(BestTeam, max_score);
+
+            InfoCircuitTeam info = new InfoCircuitTeam(String.valueOf(pos), BestTeam, max_score);
+            myadapterteam.dd(info);// add it to Myadapter()
+            pos++;
         }
-        return sortedMap;
+        myadapterteam.notifyDataSetChanged();
     }
 }
 

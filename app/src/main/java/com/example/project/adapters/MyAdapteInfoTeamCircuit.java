@@ -48,7 +48,7 @@ public class MyAdapteInfoTeamCircuit extends BaseAdapter
 
         pos.setText(vector.get(position).getPosition());
         teamname.setText(vector.get(position).getTeamName());
-        points.setText(vector.get(position).getPoints());
+        points.setText(String.valueOf(vector.get(position).getPoints()));
         return convertView;
     }
 
