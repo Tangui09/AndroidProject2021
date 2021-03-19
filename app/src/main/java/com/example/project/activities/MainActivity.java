@@ -62,7 +62,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    //TODO : faire search circuits + résultats de la course : pos , no , Driver, Constructor , Laps, Grid , Time , Status , Points ex : http://ergast.com/api/f1/current/last/results
-    //TODO : trouver d'autres critères de comparaison pour les drivers (a voir si besoin)
-    //TODO : Faire marcher les boutons "BACK"
 }

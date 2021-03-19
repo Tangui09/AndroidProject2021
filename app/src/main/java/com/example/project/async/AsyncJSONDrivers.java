@@ -69,7 +69,7 @@ public class AsyncJSONDrivers extends AsyncTask<String, Void, JSONObject> {
             {
                 JSONObject entry = items3.getJSONObject(i);//get the i item
                 String driverId = entry.getString("driverId");//get the item name : driverid
-                String givenName = entry.getString("givenName");//get the item name : media
+                String givenName = entry.getString("givenName");//get the item name : fullname
                 Log.i("CIO", "URL media: " + driverId);
 
                 myadapter.dd(driverId,givenName);// add it to Myadapter()

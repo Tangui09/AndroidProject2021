@@ -14,11 +14,10 @@ import com.example.project.adapters.MyAdapter;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
-    public AppCompatActivity myActivity;
     public static TextView textnamecircuit;
     public static TextView textplacecircuit;
     public static TextView dategrandprix;
-    private TextView text_circuit;
+
     private Button btnadd;
 
     private String url;
@@ -75,13 +74,12 @@ public class InfoCircuitActivity extends AppCompatActivity {
             }
         });
 
-
         if(race.equals("last"))        //If it's the last race
         {
             url = "https://ergast.com/api/f1/current/last/results.json";
         }
         else
-        {
+        { // we get all the info pass by the other Activity intent
             String year = new String(extras.getString("year"));
             String position = new String(extras.getString("position"));
             String Racename = new String(extras.getString("Racename"));

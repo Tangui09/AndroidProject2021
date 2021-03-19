@@ -100,12 +100,13 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
 
             if(condFragment == 0)
             {
+
                 for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
                 {
                     JSONObject entry2 = Resultarray.getJSONObject(i);
                     String number = entry2.getString("number");//get the item name : number
                     String position = entry2.getString("position");//get the item name : position
-                    int points = Integer.parseInt(entry2.getString("points"));//get the item name : position
+                    int points = Integer.parseInt(entry2.getString("points"));//get the item name : points
 
                     JSONObject Driverarray = entry2.getJSONObject("Driver");
                     String FirstName = Driverarray.getString("givenName");//get the item name : givenName
