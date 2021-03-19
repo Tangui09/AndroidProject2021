@@ -22,11 +22,9 @@ import static com.example.project.utils.Constant.PREF_DRIVERS;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
-    public AppCompatActivity myActivity;
     public static TextView textnamecircuit;
     public static TextView textplacecircuit;
     public static TextView dategrandprix;
-    private TextView text_circuit;
     private ListView list;
     private MyAdapteInfoCircuit adapter;
     private Button btnadd;
@@ -47,11 +45,8 @@ public class InfoCircuitActivity extends AppCompatActivity {
         String race = new String(extras.getString("Race"));
 
         adapter = new MyAdapteInfoCircuit();
-        list.setAdapter(adapter);
-        list.setDivider(null);
-
-
-
+        list.setAdapter(adapter);//we set the listView
+        list.setDivider(null);//delete the line between each info
 
         String url;
         if(race.equals("last"))        //If it's the last race
@@ -59,7 +54,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
             url = "https://ergast.com/api/f1/current/last/results.json";
         }
         else
-        {
+        { // we get all the info pass by the other Activity intent
             String year = new String(extras.getString("year"));
             String position = new String(extras.getString("position"));
             String Racename = new String(extras.getString("Racename"));
