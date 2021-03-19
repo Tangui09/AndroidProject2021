@@ -16,6 +16,7 @@ import java.util.Vector;
 
 public class MyAdapterCompare extends BaseAdapter {
     private Vector<DriverCompare> vector;
+    private int counter = 1 ;
     public MyAdapterCompare() {
         vector = new Vector<DriverCompare>();
     }
@@ -40,20 +41,23 @@ public class MyAdapterCompare extends BaseAdapter {
         // ConvertView which allows to display all the names on the screen
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.textviewlayout_driver, parent, false);
+            convertView = inflater.inflate(R.layout.textviewlayout_universal, parent, false);
         }
-        TextView text = ((TextView)convertView.findViewById(R.id.textView));
+        TextView text = ((TextView)convertView.findViewById(R.id.textView_universal));
         if(vector.get(position).getBestperformance().equals("bestperf")){
-            text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin());
+            text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin()+" ratio on "+vector.get(position).getNumberrace()+" races" );
+        }
+        else if(vector.get(position).getBestperformance().equals("compare list")){ // in order to display only the name
+            text.setText(vector.get(position).getDrivername());
         }
         else{
             text.setText(vector.get(position).getDrivername()+": "+vector.get(position).getNumberwin()+" wins");
         }
-
+        counter++;
         return convertView;
     }
 
-    public  void dd(DriverCompare driver){
+    public void dd(DriverCompare driver){
 
         vector.add(driver);
         Log.i("JFL", "Adding to adapter: " + driver.getNumberwin());
@@ -66,6 +70,13 @@ public class MyAdapterCompare extends BaseAdapter {
         }
 
     }
+    public void sortcroissant(){
+        Collections.sort(vector);
+    }
+    public void sortdecroissant(){
+        Collections.sort(vector, Collections.reverseOrder());
+    }
+
 
 }
 

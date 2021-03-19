@@ -31,8 +31,8 @@ public class CircuitActivity extends AppCompatActivity {
         editTextYear = findViewById(R.id.editTextYear4);
 
         //for check if the user come from compareActivity
-        Bundle extras = getIntent().getExtras();
-        ListView list = findViewById(R.id.list_InfoCircuits);
+        ListView list = findViewById(R.id.list_DriverInfo);
+
         adapter = new MyAdapterCircuits();
         list.setAdapter(adapter);
         list.setDivider(null);
@@ -62,6 +62,7 @@ public class CircuitActivity extends AppCompatActivity {
                 String texteditTextYear = editTextYear.getText().toString() ;
                 Object data = adapter.getItemName(position);
                 String data2 = data+"";
+                intent.putExtra("Race","not last");//we pass info in the intent in order to make the right request
                 intent.putExtra("year",texteditTextYear);
                 intent.putExtra("position",String.valueOf(position));
                 intent.putExtra("Racename",data2);

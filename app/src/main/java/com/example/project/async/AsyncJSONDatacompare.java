@@ -80,8 +80,13 @@ public class AsyncJSONDatacompare extends AsyncTask<String, Void, JSONObject> {
                     number++;
                 }
             }
+            //to make a ratio race placement
+            if(criteria.equals("bestperf")&& (items3.length()>1)){
+               number = number/items3.length();
+            }
+
             Log.i("JFL", "add to compare");
-            DriverCompare drivercompare = new DriverCompare(driverId,number,criteria);
+            DriverCompare drivercompare = new DriverCompare(driverId,number,criteria,items3.length());
             myadapter.dd(drivercompare);
             myadapter.notifyDataSetChanged();
         } catch (JSONException e) {

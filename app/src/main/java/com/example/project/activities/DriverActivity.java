@@ -16,7 +16,7 @@ import com.example.project.R;
 
 public class DriverActivity extends AppCompatActivity {
 
-    private MyAdapter adapter;
+    private MyAdapter myadapter;
     private EditText editTextYear;
     private EditText editTextName;
     private String Activity;
@@ -38,18 +38,25 @@ public class DriverActivity extends AppCompatActivity {
         //for check if the user come from compareActivity
         Bundle extras = getIntent().getExtras();
         Activity = new String(extras.getString("Activity"));
-        ListView list = findViewById(R.id.list_InfoCircuits);
-        adapter = new MyAdapter();
-        list.setAdapter(adapter);
+        ListView list = findViewById(R.id.list_DriverInfo);
+        myadapter = new MyAdapter();
+        list.setAdapter(myadapter);
         list.setDivider(null);
 
 
         btnYear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String texteditTextYear = editTextYear.getText().toString() ;
+
+                //clear the list
+                myadapter = new MyAdapter();
+                list.removeAllViewsInLayout();
+                myadapter.notifyDataSetChanged();
+                list.setAdapter(myadapter);
+
+                String texteditTextYear = editTextYear.getText().toString();
                 if(!texteditTextYear.matches("")){
-                    AsyncJSONDrivers task = new AsyncJSONDrivers(adapter);
+                    AsyncJSONDrivers task = new AsyncJSONDrivers(myadapter);
                     String url = "https://ergast.com/api/f1/"+texteditTextYear+"/drivers.json";
                     task.execute(url);
                 }
@@ -60,9 +67,16 @@ public class DriverActivity extends AppCompatActivity {
         btnName.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
+                //clear the list
+                myadapter = new MyAdapter();
+                list.removeAllViewsInLayout();
+                myadapter.notifyDataSetChanged();
+                list.setAdapter(myadapter);
+
                 String texteditTextName = editTextName.getText().toString() ;
                 if(!texteditTextName.matches("")){
-                    AsyncJSONDrivers task = new AsyncJSONDrivers(adapter);
+                    AsyncJSONDrivers task = new AsyncJSONDrivers(myadapter);
                     String url = "https://ergast.com/api/f1/drivers/"+texteditTextName+".json";
                     task.execute(url);
                 }
@@ -74,7 +88,7 @@ public class DriverActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), InfoDriverActivity.class);
-                Object data = adapter.getItem(position);
+                Object data = myadapter.getItem(position);
                 String data2 = data+"";
                 intent.putExtra("name",data2);
                 intent.putExtra("Activity",Activity);

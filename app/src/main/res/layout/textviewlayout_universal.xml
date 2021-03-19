@@ -2,17 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_universal"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@color/red"
-        android:drawableRight="@drawable/ic_right_arrow_white"
         android:gravity="center"
         android:paddingRight="15dp"
         android:textColor="@color/white"
@@ -21,6 +19,4 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

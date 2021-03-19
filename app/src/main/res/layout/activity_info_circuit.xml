@@ -6,27 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".activities.InfoCircuitActivity">
 
-    <ListView
-        android:id="@+id/list_InfoCircuits"
-        android:layout_width="405dp"
-        android:layout_height="374dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_marginTop="32dp"
+        android:background="#E6000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textnamecircuit">
-
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/textplacecircuit" />
 
     <TextView
         android:id="@+id/textnamecircuit"
-        android:layout_width="379dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="test"
+        android:layout_width="221dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="68dp"
+        android:text="circuit name"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textplacecircuit"
+        android:layout_width="221dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="96dp"
+        android:text="circuit place"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,13 +45,78 @@
         android:id="@+id/btnback4"
         android:layout_width="79dp"
         android:layout_height="43dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="@color/red"
+        android:backgroundTint="@color/white"
         android:shadowColor="@color/black"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_InfoCircuits" />
+        app:layout_constraintTop_toBottomOf="@+id/FrameLayoutFragment" />
+
+    <TextView
+        android:id="@+id/dateCircuit"
+        android:layout_width="153dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
+        android:text="DD/MM/YYYY"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFormula1"
+        android:layout_width="382dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="FORMULA 1"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="383dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="RESULT OF THE RACE"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/btnSwitchToDrivers"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="Drivers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+    <Button
+        android:id="@+id/btnSwitchToTeams"
+        android:layout_width="167dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:text="Teams"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+    <FrameLayout
+        android:id="@+id/FrameLayoutFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

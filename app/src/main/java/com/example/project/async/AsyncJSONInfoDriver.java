@@ -76,11 +76,11 @@ public class AsyncJSONInfoDriver extends AsyncTask<String, Void, JSONObject> {
 
                 String permanentNumber = "...";
                 if (entry.has("permanentNumber")){//verif if driver has a permanent number
-                permanentNumber = entry.getString("permanentNumber");//get the item name : media
+                permanentNumber = entry.getString("permanentNumber");//get the item name : permanent number
                 }
 
-                String nationality = entry.getString("nationality");//get the item name : media
-                String dateOfBirth = entry.getString("dateOfBirth");//get the item name : media
+                String nationality = entry.getString("nationality");//get the item name : nationality
+                String dateOfBirth = entry.getString("dateOfBirth");//get the item name : DOB
                 String url = entry.getString("url");//get the item name : media
                 Log.i("CIO", "URL media: " + driverId);
 
