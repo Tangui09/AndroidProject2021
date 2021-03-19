@@ -8,16 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.project.R;
-import com.example.project.utils.InfoCircuit;
+import com.example.project.InfoCircuitTeam;
 
 import java.util.Vector;
 
 public class MyAdapteInfoTeamCircuit extends BaseAdapter
 {
-    private Vector<InfoCircuit> vector;
+    private Vector<InfoCircuitTeam> vector;
 
     public MyAdapteInfoTeamCircuit() {
-        vector = new Vector<InfoCircuit>();
+        vector = new Vector<InfoCircuitTeam>();
     }
 
     @Override
@@ -43,18 +43,18 @@ public class MyAdapteInfoTeamCircuit extends BaseAdapter
             convertView = inflater.inflate(R.layout.textviewlayout_teamresultrace, parent, false);
         }
         TextView pos = ((TextView)convertView.findViewById(R.id.textViewPosition));
-        TextView firstname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
+        TextView teamname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
         TextView points = ((TextView)convertView.findViewById(R.id.textViewPoints));
 
         pos.setText(vector.get(position).getPosition());
-        firstname.setText(vector.get(position).getDriver_firstname());
+        teamname.setText(vector.get(position).getTeamName());
         points.setText(vector.get(position).getPoints());
         return convertView;
     }
 
-    public  void dd(InfoCircuit info){
+    public  void dd(InfoCircuitTeam info){
         vector.add(info);
-        Log.i("JFL", "Adding to adapter: " + info.getDriver());
+        Log.i("JFL", "Adding to adapter: " + info.getTeamName());
     }
 
 }

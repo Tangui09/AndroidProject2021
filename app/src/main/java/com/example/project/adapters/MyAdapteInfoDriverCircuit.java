@@ -8,16 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.project.R;
-import com.example.project.utils.InfoCircuit;
+import com.example.project.InfoCircuitDriver;
 
 import java.util.Vector;
 
 public class MyAdapteInfoDriverCircuit extends BaseAdapter
 {
-    private Vector<InfoCircuit> vector;
+    private Vector<InfoCircuitDriver> vector;
 
     public MyAdapteInfoDriverCircuit() {
-        vector = new Vector<InfoCircuit>();
+        vector = new Vector<InfoCircuitDriver>();
     }
 
     @Override
@@ -54,7 +54,7 @@ public class MyAdapteInfoDriverCircuit extends BaseAdapter
         return convertView;
     }
 
-    public  void dd(InfoCircuit info){
+    public  void dd(InfoCircuitDriver info){
         vector.add(info);
         Log.i("JFL", "Adding to adapter: " + info.getDriver());
     }

@@ -3,9 +3,11 @@ package com.example.project.async;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.project.InfoCircuitTeam;
 import com.example.project.activities.InfoCircuitActivity;
 import com.example.project.adapters.MyAdapteInfoDriverCircuit;
-import com.example.project.utils.InfoCircuit;
+import com.example.project.adapters.MyAdapteInfoTeamCircuit;
+import com.example.project.InfoCircuitDriver;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,13 +21,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject> {
 
-    private MyAdapteInfoDriverCircuit myadapter;
+    private MyAdapteInfoDriverCircuit myadapterdriver;
+    private MyAdapteInfoTeamCircuit myadapterteam;
+    private int condFragment;
 
     public AsyncJSONResultsCircuit(MyAdapteInfoDriverCircuit adapter) {
-        this.myadapter = adapter;
+        this.myadapterdriver = adapter;
+        condFragment = 0;
+    }
+
+    public AsyncJSONResultsCircuit(MyAdapteInfoTeamCircuit adapter) {
+        this.myadapterteam = adapter;
+        condFragment = 1;
     }
 
     protected JSONObject doInBackground(String... strings) {
@@ -67,7 +85,6 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
 
             JSONObject circuitarray = entry.getJSONObject("Circuit");
             String circuit_name = circuitarray.getString("circuitName");//get the item name : media
-//            String grandprix_date = entry.getString("date");
             LocalDate grandprix_date = LocalDate.parse(entry.getString("date"));
             JSONObject Locationarray = circuitarray.getJSONObject("Location");
             String circuit_place = Locationarray.getString("locality");
@@ -78,27 +95,67 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
             InfoCircuitActivity.textnamecircuit.setText(circuit_name);
             InfoCircuitActivity.textplacecircuit.setText(circuit_place);
             InfoCircuitActivity.dategrandprix.setText(String.valueOf(grandprix_date.getDayOfMonth() + "/" + grandprix_date.getMonthValue() + "/" + grandprix_date.getYear()));
-//            InfoCircuitActivity.dategrandprix.setText(grandprix_date);
 
-            for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
+            if(condFragment == 0)
             {
-                JSONObject entry2 = Resultarray.getJSONObject(i);
-                String number = entry2.getString("number");//get the item name : number
-                String position = entry2.getString("position");//get the item name : position
-                String points = "+" + entry2.getString("points");//get the item name : position
+                for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
+                {
+                    JSONObject entry2 = Resultarray.getJSONObject(i);
+                    String number = entry2.getString("number");//get the item name : number
+                    String position = entry2.getString("position");//get the item name : position
+                    String points = "+" + entry2.getString("points");//get the item name : position
 
-                JSONObject Driverarray = entry2.getJSONObject("Driver");
-                String FirstName = Driverarray.getString("givenName");//get the item name : givenName
-                String FamilyName = Driverarray.getString("familyName");
-                String driver = FirstName + " " + FamilyName;
-                Log.i("CIO", "URL media: " + driver);
+                    JSONObject Driverarray = entry2.getJSONObject("Driver");
+                    String FirstName = Driverarray.getString("givenName");//get the item name : givenName
+                    String FamilyName = Driverarray.getString("familyName");
+                    String driver = FirstName + " " + FamilyName;
+                    Log.i("CIO", "URL media: " + driver);
 
-                InfoCircuit resultcircuit = new InfoCircuit(number,position,driver, FirstName, FamilyName, points);
+                    InfoCircuitDriver resultcircuit = new InfoCircuitDriver(number,position,driver, FirstName, FamilyName, Integer.parseInt(points));
 
-                myadapter.dd(resultcircuit);// add it to Myadapter()
+                    myadapterdriver.dd(resultcircuit);// add it to Myadapter()
 
+                }
+                myadapterdriver.notifyDataSetChanged();
             }
-            myadapter.notifyDataSetChanged();
+            else
+            {
+                HashMap<String, Integer> teamVector = new HashMap<String, Integer>(); //key = name of constructor | value = number of points
+
+                for (int i = 0; i<Resultarray.length(); i++)//in order to get all the item
+                {
+                    JSONObject entry2 = Resultarray.getJSONObject(i);
+                    int points = Integer.parseInt(entry2.getString("points"));//get the item name : position
+
+                    JSONObject Constructorarray = entry2.getJSONObject("Constructor");
+                    String Constructor_name = Constructorarray.getString("name");//get the item name : name
+                    Log.i("CIO", "URL media: " + Constructor_name);
+
+
+                    if(teamVector.containsKey(Constructor_name))
+                    {
+                        teamVector.replace(Constructor_name, teamVector.get(Constructor_name) + points);
+                    }
+                    else
+                    {
+                        teamVector.put(Constructor_name, points);
+                    }
+                }
+
+                HashMap<String, Integer> orderedTeamVector = sortHashMapByValues(teamVector);
+
+                int pos = 1;
+                for ( Object key : orderedTeamVector.keySet() )
+                {
+                    InfoCircuitTeam info = new InfoCircuitTeam(String.valueOf(pos), String.valueOf(key), orderedTeamVector.get(key));
+                    myadapterteam.dd(info);// add it to Myadapter()
+                    pos++;
+                }
+
+                myadapterteam.notifyDataSetChanged();
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -120,6 +177,33 @@ public class AsyncJSONResultsCircuit  extends AsyncTask<String, Void, JSONObject
     }
 
 
+    public HashMap<String, Integer> sortHashMapByValues( HashMap<String, Integer> passedMap )
+    {
+        List<String> mapKeys = new ArrayList<>(passedMap.keySet());
+        List<Integer> mapValues = new ArrayList<>(passedMap.values());
+        Collections.sort(mapValues);
+        Collections.sort(mapKeys);
+
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
+
+        for (int val : mapValues)
+        {
+            Iterator<String> keyIt = mapKeys.iterator();
+
+            while (keyIt.hasNext()) {
+                String key = keyIt.next();
+                Integer comp1 = passedMap.get(key);
+                Integer comp2 = val;
+
+                if (comp1 < comp2) {
+                    keyIt.remove();
+                    sortedMap.put(key, comp2);
+                    break;
+                }
+            }
+        }
+        return sortedMap;
+    }
 }
 
 
