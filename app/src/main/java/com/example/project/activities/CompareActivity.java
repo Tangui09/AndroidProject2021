@@ -1,7 +1,6 @@
 package com.example.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,14 +12,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
-
 import com.example.project.DriverCompare;
 import com.example.project.async.AsyncJSONDatacompare;
 import com.example.project.adapters.MyAdapterCompare;
 import com.example.project.R;
-
 import static com.example.project.utils.Constant.PREF_COMPARE;
 import static com.example.project.utils.Constant.PREF_DRIVERS;
 
@@ -76,7 +72,7 @@ public class CompareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder myPopup = new AlertDialog.Builder(activity);
+                AlertDialog.Builder myPopup = new AlertDialog.Builder(activity);//create popup to get confirmation from the user to reset
                 myPopup.setTitle("Confirm");
                 myPopup.setMessage("Are you sure to reset all the driver to compare ?");
                 myPopup.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -102,7 +98,7 @@ public class CompareActivity extends AppCompatActivity {
         });
         btnaddcompare.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//redirect to driver search
                 Intent intent = new Intent(getApplicationContext(), DriverActivity.class);
                 String data = "CompareActivity";
                 intent.putExtra("Activity",data);
@@ -141,7 +137,7 @@ public class CompareActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnfilter.setOnClickListener(new View.OnClickListener(){
+        btnfilter.setOnClickListener(new View.OnClickListener(){//to invert classement display
             @Override
             public void onClick(View v) {
                 if(ordercompare.equals("croissant")){

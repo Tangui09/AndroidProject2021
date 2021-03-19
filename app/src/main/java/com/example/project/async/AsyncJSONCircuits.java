@@ -72,7 +72,7 @@ public class AsyncJSONCircuits  extends AsyncTask<String, Void, JSONObject> {
                 JSONObject entry = items3.getJSONObject(i);//get the i item
                 JSONObject circuitarray = entry.getJSONObject("Circuit");
                 String circuitId = circuitarray.getString("circuitId");//get the item name : driverid
-                String circuitName = circuitarray.getString("circuitName");//get the item name : media
+                String circuitName = circuitarray.getString("circuitName");//get the item name : circuit name
                 JSONObject Locationarray = circuitarray.getJSONObject("Location");
                 String location = Locationarray.getString("locality");
                 String country = Locationarray.getString("country");

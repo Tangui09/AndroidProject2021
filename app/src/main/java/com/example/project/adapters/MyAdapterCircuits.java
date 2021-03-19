@@ -38,7 +38,7 @@ public class MyAdapterCircuits extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // ConvertView which allows to display all the names on the screen
+        // ConvertView which allows to display all the circuits on the screen
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             convertView = inflater.inflate(R.layout.textviewlayout_circuits, parent, false);
