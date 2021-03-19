@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project.async.AsyncJSONInfoDriver;
 import com.example.project.R;
@@ -67,6 +68,7 @@ public class InfoDriverActivity extends AppCompatActivity {
                     intent.putExtra("Activity"," ");
                     startActivity(intent);
                 }
+                Toast.makeText(getApplicationContext(),"Driver add",Toast.LENGTH_SHORT).show();
             }
         });
     }
