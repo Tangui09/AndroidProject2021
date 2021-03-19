@@ -30,7 +30,9 @@ public class CircuitActivity extends AppCompatActivity {
         btnback3 = findViewById(R.id.btnback3);
         editTextYear = findViewById(R.id.editTextYear4);
 
-        ListView list = findViewById(R.id.list_InfoCircuits);
+        //for check if the user come from compareActivity
+        ListView list = findViewById(R.id.list_DriverInfo);
+
         adapter = new MyAdapterCircuits();
         list.setAdapter(adapter);
         list.setDivider(null);

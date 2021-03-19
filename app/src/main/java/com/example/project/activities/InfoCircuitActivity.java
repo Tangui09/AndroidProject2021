@@ -2,32 +2,27 @@ package com.example.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.project.R;
-import com.example.project.adapters.MyAdapteInfoCircuit;
 import com.example.project.adapters.MyAdapter;
-import com.example.project.async.AsyncJSONInfoDriver;
-import com.example.project.async.AsyncJSONResultsCircuit;
-
-import static com.example.project.utils.Constant.PREF_COMPARE;
-import static com.example.project.utils.Constant.PREF_DRIVERS;
 
 public class InfoCircuitActivity extends AppCompatActivity {
 
     public static TextView textnamecircuit;
     public static TextView textplacecircuit;
     public static TextView dategrandprix;
-    private ListView list;
-    private MyAdapteInfoCircuit adapter;
+
     private Button btnadd;
+
+    private String url;
+
+    Button driverFragment, teamFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +33,47 @@ public class InfoCircuitActivity extends AppCompatActivity {
         textplacecircuit = findViewById(R.id.textplacecircuit);
         dategrandprix = findViewById(R.id.dateCircuit);
         btnadd = findViewById(R.id.btnAdd);
-        list = findViewById(R.id.list_InfoCircuits);
+
+        driverFragment = (Button) findViewById(R.id.btnSwitchToDrivers);
+        teamFragment = (Button) findViewById(R.id.btnSwitchToTeams);
+
+        Fragment_DriverResult firstFragment = new Fragment_DriverResult();
+        Fragment_TeamResult secondFragment = new Fragment_TeamResult();
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.FrameLayoutFragment, firstFragment);
+        fragmentTransaction.commit();
 
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
         String race = new String(extras.getString("Race"));
 
-        adapter = new MyAdapteInfoCircuit();
-        list.setAdapter(adapter);//we set the listView
-        list.setDivider(null);//delete the line between each info
 
-        String url;
+        driverFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.FrameLayoutFragment, firstFragment);
+//                fragmentTransaction.addToBackStack(null);   //Click back to previous fragment
+                fragmentTransaction.commit();
+                firstFragment.startAsync(url);
+            }
+        });
+        // perform setOnClickListener event on Second Button
+        teamFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.FrameLayoutFragment, secondFragment);
+//                fragmentTransaction.addToBackStack(null);   //Click back to previous fragment
+                fragmentTransaction.commit();
+                secondFragment.startAsync(url);
+            }
+        });
+
         if(race.equals("last"))        //If it's the last race
         {
             url = "https://ergast.com/api/f1/current/last/results.json";
@@ -65,7 +90,6 @@ public class InfoCircuitActivity extends AppCompatActivity {
             url = "https://ergast.com/api/f1/"+year+"/"+positionInt+"/results.json";
         }
 
-        AsyncJSONResultsCircuit task = new AsyncJSONResultsCircuit(adapter);
-        task.execute(url);
+        firstFragment.startAsync(url);
     }
 }

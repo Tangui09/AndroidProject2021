@@ -8,14 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.project.R;
-import com.example.project.utils.InfoCircuit;
+import com.example.project.InfoCircuitTeam;
 
 import java.util.Vector;
 
-public class MyAdapteInfoCircuit extends BaseAdapter {
-    private Vector<InfoCircuit> vector;
-    public MyAdapteInfoCircuit() {
-        vector = new Vector<InfoCircuit>();
+public class MyAdapteInfoTeamCircuit extends BaseAdapter
+{
+    private Vector<InfoCircuitTeam> vector;
+
+    public MyAdapteInfoTeamCircuit() {
+        vector = new Vector<InfoCircuitTeam>();
     }
 
     @Override
@@ -38,23 +40,21 @@ public class MyAdapteInfoCircuit extends BaseAdapter {
         // ConvertView which allows to display all the names on the screen
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.textviewlayout_driverresultrace, parent, false);
+            convertView = inflater.inflate(R.layout.textviewlayout_teamresultrace, parent, false);
         }
         TextView pos = ((TextView)convertView.findViewById(R.id.textViewPosition));
-        TextView firstname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
-        TextView lastname = ((TextView)convertView.findViewById(R.id.textViewDriverLastname));
+        TextView teamname = ((TextView)convertView.findViewById(R.id.textViewDriverFirstname));
         TextView points = ((TextView)convertView.findViewById(R.id.textViewPoints));
 
         pos.setText(vector.get(position).getPosition());
-        firstname.setText(vector.get(position).getDriver_firstname());
-        lastname.setText(vector.get(position).getDriver_lastname());
-        points.setText(vector.get(position).getPoints());
+        teamname.setText(vector.get(position).getTeamName());
+        points.setText(String.valueOf(vector.get(position).getPoints()));
         return convertView;
     }
 
-    public  void dd(InfoCircuit info){
+    public  void dd(InfoCircuitTeam info){
         vector.add(info);
-        Log.i("JFL", "Adding to adapter: " + info.getDriver());
+        Log.i("JFL", "Adding to adapter: " + info.getTeamName());
     }
 
 }

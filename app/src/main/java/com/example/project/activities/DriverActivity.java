@@ -38,7 +38,7 @@ public class DriverActivity extends AppCompatActivity {
         //for check if the user come from compareActivity
         Bundle extras = getIntent().getExtras();
         Activity = new String(extras.getString("Activity"));
-        ListView list = findViewById(R.id.list_InfoCircuits);
+        ListView list = findViewById(R.id.list_DriverInfo);
         myadapter = new MyAdapter();
         list.setAdapter(myadapter);
         list.setDivider(null);

@@ -1,14 +1,17 @@
-package com.example.project.utils;
+package com.example.project;
 
-public class InfoCircuit {
+public class InfoCircuitDriver
+{
     private String number;
     private String position;
     private String driver;
     private String driver_firstname;
     private String driver_lastname;
-    private String points;
+    private int points;
 
-    public InfoCircuit(String number,String position, String driver, String driver_firstname, String driver_lastname, String points){
+    public InfoCircuitDriver(){}
+
+    public InfoCircuitDriver(String number, String position, String driver, String driver_firstname, String driver_lastname, int points){
         this.driver = driver;
         this.number = number;
         this.position = position;
@@ -33,5 +36,5 @@ public class InfoCircuit {
 
     public String getDriver_lastname() { return driver_lastname; }
 
-    public String getPoints() { return points; }
+    public int getPoints() { return points; }
 }
