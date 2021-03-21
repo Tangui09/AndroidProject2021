@@ -88,9 +88,8 @@ public class DriverActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), InfoDriverActivity.class);
-                Object data = myadapter.getItem(position);
-                String data2 = data+"";
-                intent.putExtra("name",data2);
+                String data = myadapter.getId(position);
+                intent.putExtra("name",data);
                 intent.putExtra("Activity",Activity);
                 startActivity(intent);
             }

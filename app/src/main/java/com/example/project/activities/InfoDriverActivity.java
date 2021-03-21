@@ -24,7 +24,7 @@ public class InfoDriverActivity extends AppCompatActivity {
     public static TextView textNationality;
     public static TextView textDOB;
     public static TextView textInfo;
-    private Button btnadd;
+    private Button btnadd,btnback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +37,16 @@ public class InfoDriverActivity extends AppCompatActivity {
         textDOB = findViewById(R.id.textDOB2);
         textInfo = findViewById(R.id.textInformation2);
         btnadd = findViewById(R.id.btnAdd);
+        btnback = findViewById(R.id.btnback5);
 
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
         String data = new String(extras.getString("name"));
         String Activity = new String(extras.getString("Activity"));
         System.out.println(data);
-        String[] datasplit = data.split(" ");//split the full name in order to have just the name for http request
 
         AsyncJSONInfoDriver task = new AsyncJSONInfoDriver();
-        String url = "https://ergast.com/api/f1/drivers/"+datasplit[0]+".json";
+        String url = "https://ergast.com/api/f1/drivers/"+data+".json";
         task.execute(url);
 
         btnadd.setOnClickListener(new View.OnClickListener(){
@@ -54,7 +54,7 @@ public class InfoDriverActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(PREF_COMPARE, Context.MODE_PRIVATE);
                 String compare = sharedPref.getString(PREF_DRIVERS,"");//get string of user current on compare list
-                compare += datasplit[0]+",";// add to the string the current driver and after split string
+                compare += data+",";// add to the string the current driver and after split string
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(PREF_DRIVERS, compare);
                 editor.apply();
@@ -69,6 +69,14 @@ public class InfoDriverActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 Toast.makeText(getApplicationContext(),"Driver add",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DriverActivity.class);
+                startActivity(intent);
             }
         });
     }

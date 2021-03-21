@@ -9,8 +9,8 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="140dp"
         android:background="#E6000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textplacecircuit" />
@@ -41,17 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnback4"
-        android:layout_width="79dp"
-        android:layout_height="43dp"
-        android:backgroundTint="@color/white"
-        android:shadowColor="@color/black"
-        android:text="Back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FrameLayoutFragment" />
+
 
     <TextView
         android:id="@+id/dateCircuit"
@@ -84,13 +74,13 @@
         android:layout_width="383dp"
         android:layout_height="43dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="160dp"
         android:text="RESULT OF THE RACE"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSwitchToDrivers"
@@ -115,8 +105,26 @@
     <FrameLayout
         android:id="@+id/FrameLayoutFragment"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnback4"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/btnSwitchToDrivers"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <Button
+        android:id="@+id/btnback4"
+        android:layout_width="79dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:shadowColor="@color/black"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

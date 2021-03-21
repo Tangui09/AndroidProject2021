@@ -9,14 +9,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.project.Driver;
 import com.example.project.R;
 
 import java.util.Vector;
 
-public class MyAdapter extends BaseAdapter {
-    private Vector<String> vector;
+public class MyAdapter extends BaseAdapter
+{
+    private Vector<Driver> vector;
+
     public MyAdapter() {
-        vector = new Vector<String>();
+        vector = new Vector<Driver>();
     }
 
     @Override
@@ -42,19 +45,19 @@ public class MyAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.textviewlayout_driver, parent, false);
         }
             TextView text = ((TextView)convertView.findViewById(R.id.textView));
-            text.setText(vector.get(position));
+            text.setText(vector.get(position).getFirstname() + " " + vector.get(position).getName());
 
 
         return convertView;
     }
 
-    public  void dd(String... urls){
-        String regroup = "";
-        for(int i=0;i<urls.length;i++){
-           regroup += urls[i]+" ";
-        }
-        vector.add(regroup);
-        Log.i("JFL", "Adding to adapter: " + regroup);
+    public void dd(Driver driver){
+        vector.add(driver);
+        Log.i("JFL", "Adding to adapter: " + driver.getId());
+    }
+
+    public String getId(int position) {
+        return vector.get(position).getId();
     }
 
 }

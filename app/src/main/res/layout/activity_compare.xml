@@ -21,7 +21,6 @@
         android:id="@+id/text_info"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="Compare Drivers"
         android:textColor="@color/white"
@@ -34,7 +33,6 @@
         android:id="@+id/btncompare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:backgroundTint="@color/red"
         android:shadowColor="@color/black"
         android:text="Compare"
@@ -42,34 +40,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbestperf" />
+        app:layout_constraintTop_toBottomOf="@+id/view_head_main" />
 
 
     <Button
         android:id="@+id/btnfilter"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/white"
         android:background="@drawable/ic_up_down_arrow"
         android:foreground="@drawable/text_view_border"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbestperf" />
-
-    <Button
-        android:id="@+id/btnaddcompare"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/red"
-        android:textColor="@color/white"
-        android:text="Add to compare"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCompare" />
+        app:layout_constraintTop_toBottomOf="@+id/view_head_main" />
 
     <EditText
         android:id="@+id/editTextYear"
@@ -100,15 +84,7 @@
         app:layout_constraintStart_toEndOf="@+id/editTextYear"
         app:layout_constraintTop_toBottomOf="@+id/text_info" />
 
-    <ListView
-        android:id="@+id/listCompare"
-        android:layout_width="320dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/text_view_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btncompare" />
+
 
     <EditText
         android:id="@+id/editTextCircuits"
@@ -125,18 +101,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextYear"></EditText>
 
+    <ListView
+        android:id="@+id/listCompare"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginBottom="130dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/text_view_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btncompare" />
+
+    <Button
+        android:id="@+id/btnreset"
+        android:layout_width="88dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/red"
+        android:text="Reset"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btnback"
         android:layout_width="81dp"
         android:layout_height="50dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/red"
-        android:textColor="@color/white"
         android:text="Back"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCompare" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnaddcompare"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/red"
+        android:text="Add to compare"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnback"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toEndOf="@+id/btnreset"
+        app:layout_constraintTop_toTopOf="@+id/btnreset"
+        app:layout_constraintVertical_bias="0.386" />
 
     <CheckBox
         android:id="@+id/checkbestperf"
@@ -151,18 +170,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editTextCircuits"
         app:layout_constraintTop_toBottomOf="@+id/checkwin" />
-
-    <Button
-        android:id="@+id/btnreset"
-        android:layout_width="88dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/red"
-        android:text="Reset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCompare" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
