@@ -7,14 +7,6 @@
     tools:context=".activities.Fragment_TeamResult">
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="#E6000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView15"
         android:layout_width="67dp"
         android:layout_height="33dp"
@@ -28,10 +20,10 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="223dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="100dp"
-        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginStart="88dp"
+        android:gravity="center"
         android:text="Team Name"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -43,19 +35,19 @@
         android:id="@+id/textView14"
         android:layout_width="67dp"
         android:layout_height="33dp"
-        android:layout_marginStart="344dp"
+        android:layout_marginRight="15dp"
         android:gravity="center"
         android:text="Points"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/list_TeamInfo"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

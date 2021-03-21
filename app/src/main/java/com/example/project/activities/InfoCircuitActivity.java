@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
     public static TextView textplacecircuit;
     public static TextView dategrandprix;
 
-    private Button btnadd;
+    private Button btnback;
 
     private String url;
 
@@ -32,7 +33,7 @@ public class InfoCircuitActivity extends AppCompatActivity {
         textnamecircuit = findViewById(R.id.textnamecircuit);
         textplacecircuit = findViewById(R.id.textplacecircuit);
         dategrandprix = findViewById(R.id.dateCircuit);
-        btnadd = findViewById(R.id.btnAdd);
+        btnback = findViewById(R.id.btnback4);
 
         driverFragment = (Button) findViewById(R.id.btnSwitchToDrivers);
         teamFragment = (Button) findViewById(R.id.btnSwitchToTeams);
@@ -71,6 +72,14 @@ public class InfoCircuitActivity extends AppCompatActivity {
 //                fragmentTransaction.addToBackStack(null);   //Click back to previous fragment
                 fragmentTransaction.commit();
                 secondFragment.startAsync(url);
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project.Driver;
 import com.example.project.adapters.MyAdapter;
 
 import org.json.JSONArray;
@@ -69,10 +70,16 @@ public class AsyncJSONDrivers extends AsyncTask<String, Void, JSONObject> {
             {
                 JSONObject entry = items3.getJSONObject(i);//get the i item
                 String driverId = entry.getString("driverId");//get the item name : driverid
-                String givenName = entry.getString("givenName");//get the item name : fullname
+
+                String FirstName = entry.getString("givenName");//get the item name : givenName
+                String FamilyName = entry.getString("familyName");
+                String name = FirstName + " " + FamilyName;
+
+                Driver driver = new Driver(FirstName, FamilyName, driverId);
+
                 Log.i("CIO", "URL media: " + driverId);
 
-                myadapter.dd(driverId,givenName);// add it to Myadapter()
+                myadapter.dd(driver);// add it to Myadapter()
 
             }
             myadapter.notifyDataSetChanged();

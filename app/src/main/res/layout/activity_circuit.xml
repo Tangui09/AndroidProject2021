@@ -22,24 +22,29 @@
         android:id="@+id/btnback3"
         android:layout_width="79dp"
         android:layout_height="43dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/red"
-        android:textColor="@color/white"
         android:text="Back"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_DriverInfo" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/list_DriverInfo"
-        android:layout_width="320dp"
-        android:layout_height="360dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="200dp"
+        android:layout_height="match_parent"
         android:background="@drawable/text_view_border"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextYear4">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
     </ListView>
 
@@ -63,20 +68,18 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="61dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="25dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextYear4"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editTextYear"
-        app:layout_constraintTop_toBottomOf="@+id/text_search4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextYear4" />
 
     <TextView
         android:id="@+id/text_search4"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="57dp"
         android:gravity="center"
         android:text="Search Circuits"
@@ -105,11 +108,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="76dp"
         android:text="Location"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_head_main2" />
 
     <TextView

@@ -71,8 +71,10 @@ public class AsyncJSONInfoDriver extends AsyncTask<String, Void, JSONObject> {
             for (int i = 0; i<items3.length(); i++)//in order to get all the item
             {
                 JSONObject entry = items3.getJSONObject(i);//get the i item
-                String driverId = entry.getString("driverId");//get the item name : driverid
-                driverId += " "+ entry.getString("givenName");
+
+                String FirstName = entry.getString("givenName");//get the item name : givenName
+                String FamilyName = entry.getString("familyName");
+                String driver = FirstName + " " + FamilyName;
 
                 String permanentNumber = "...";
                 if (entry.has("permanentNumber")){//verif if driver has a permanent number
@@ -82,9 +84,9 @@ public class AsyncJSONInfoDriver extends AsyncTask<String, Void, JSONObject> {
                 String nationality = entry.getString("nationality");//get the item name : nationality
                 String dateOfBirth = entry.getString("dateOfBirth");//get the item name : DOB
                 String url = entry.getString("url");//get the item name : media
-                Log.i("CIO", "URL media: " + driverId);
+                Log.i("CIO", "URL media: " + driver);
 
-               setRes(driverId,permanentNumber,nationality,dateOfBirth,url);
+               setRes(driver,permanentNumber,nationality,dateOfBirth,url);
             }
         } catch (JSONException e) {
             e.printStackTrace();

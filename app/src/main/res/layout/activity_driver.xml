@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/text_search"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="58dp"
         android:gravity="center"
         android:text="Search Drivers"
@@ -31,7 +31,9 @@
 
     <EditText
         android:id="@+id/editTextYear"
-        android:layout_width="318dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="40dp"
         android:layout_marginVertical="24dp"
         android:layout_marginTop="84dp"
@@ -50,18 +52,19 @@
         android:layout_width="61dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        android:layout_marginRight="20dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintEnd_toEndOf="@+id/editTextYear"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_search" />
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="318dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="40dp"
         android:layout_marginVertical="30dp"
         android:layout_marginTop="20dp"
@@ -78,39 +81,47 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="61dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="26dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/white"
         android:drawableRight="@drawable/ic_loupe"
         android:paddingRight="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintEnd_toEndOf="@+id/editTextName"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnYear" />
 
     <ListView
         android:id="@+id/list_DriverInfo"
-        android:layout_width="320dp"
-        android:layout_height="310dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/text_view_border"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/view_head_main2"
+        app:layout_constraintVertical_bias="0.959" />
 
     <Button
         android:id="@+id/btnback2"
         android:layout_width="79dp"
         android:layout_height="43dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/red"
         android:text="Back"
         android:textColor="@color/white"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_DriverInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/list_DriverInfo"
+        app:layout_constraintVertical_bias="0.86" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
