@@ -24,7 +24,7 @@ public class InfoDriverActivity extends AppCompatActivity {
     public static TextView textNationality;
     public static TextView textDOB;
     public static TextView textInfo;
-    private Button btnadd;
+    private Button btnadd,btnback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,7 @@ public class InfoDriverActivity extends AppCompatActivity {
         textDOB = findViewById(R.id.textDOB2);
         textInfo = findViewById(R.id.textInformation2);
         btnadd = findViewById(R.id.btnAdd);
+        btnback = findViewById(R.id.btnback5);
 
         //get the info pass by the Activity Intent
         Bundle extras = getIntent().getExtras();
@@ -69,6 +70,14 @@ public class InfoDriverActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 Toast.makeText(getApplicationContext(),"Driver add",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DriverActivity.class);
+                startActivity(intent);
             }
         });
     }
