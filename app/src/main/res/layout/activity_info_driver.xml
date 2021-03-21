@@ -39,7 +39,7 @@
         android:gravity="center"
         android:text="..."
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.809"
         app:layout_constraintStart_toEndOf="@+id/textName"
@@ -135,7 +135,7 @@
     <TextView
         android:id="@+id/textInformation2"
         android:layout_width="match_parent"
-        android:layout_height="79dp"
+        android:layout_height="48dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="150dp"
         android:gravity="center"

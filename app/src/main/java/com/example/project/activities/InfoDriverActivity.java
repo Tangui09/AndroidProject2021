@@ -44,10 +44,9 @@ public class InfoDriverActivity extends AppCompatActivity {
         String data = new String(extras.getString("name"));
         String Activity = new String(extras.getString("Activity"));
         System.out.println(data);
-        String[] datasplit = data.split(" ");//split the full name in order to have just the name for http request
 
         AsyncJSONInfoDriver task = new AsyncJSONInfoDriver();
-        String url = "https://ergast.com/api/f1/drivers/"+datasplit[0]+".json";
+        String url = "https://ergast.com/api/f1/drivers/"+data+".json";
         task.execute(url);
 
         btnadd.setOnClickListener(new View.OnClickListener(){
@@ -55,7 +54,7 @@ public class InfoDriverActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(PREF_COMPARE, Context.MODE_PRIVATE);
                 String compare = sharedPref.getString(PREF_DRIVERS,"");//get string of user current on compare list
-                compare += datasplit[0]+",";// add to the string the current driver and after split string
+                compare += data+",";// add to the string the current driver and after split string
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(PREF_DRIVERS, compare);
                 editor.apply();
